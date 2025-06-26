@@ -44,6 +44,7 @@ namespace NeuraSpace
             label4 = new Label();
             label5 = new Label();
             button1 = new Button();
+            Admin_panel = new LinkLabel();
             SuspendLayout();
             // 
             // label1
@@ -186,6 +187,22 @@ namespace NeuraSpace
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click_2;
             // 
+            // Admin_panel
+            // 
+            Admin_panel.ActiveLinkColor = Color.MistyRose;
+            Admin_panel.AutoSize = true;
+            Admin_panel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Admin_panel.LinkBehavior = LinkBehavior.NeverUnderline;
+            Admin_panel.LinkColor = Color.SteelBlue;
+            Admin_panel.Location = new Point(610, 720);
+            Admin_panel.Name = "Admin_panel";
+            Admin_panel.Size = new Size(71, 25);
+            Admin_panel.TabIndex = 16;
+            Admin_panel.TabStop = true;
+            Admin_panel.Text = "Admin";
+            Admin_panel.VisitedLinkColor = Color.FromArgb(0, 192, 0);
+            Admin_panel.LinkClicked += linkLabel2_LinkClicked;
+            // 
             // Form1
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -193,6 +210,7 @@ namespace NeuraSpace
             BackColor = SystemColors.MenuText;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(934, 861);
+            Controls.Add(Admin_panel);
             Controls.Add(button1);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -292,5 +310,6 @@ namespace NeuraSpace
         private Label label4;
         private Label label5;
         private Button button1;
+        private LinkLabel Admin_panel;
     }
 }

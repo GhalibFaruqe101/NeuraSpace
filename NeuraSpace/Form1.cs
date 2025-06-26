@@ -51,8 +51,8 @@ namespace NeuraSpace
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (form2Instance == null || form2Instance.IsDisposed)
-                {
-                form2Instance = new Form2(this); 
+            {
+                form2Instance = new Form2(this);
             }
             form2Instance.Show();
             this.Hide();
@@ -80,8 +80,8 @@ namespace NeuraSpace
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            string username = user_name.Text; 
-            string password = user_password.Text; 
+            string username = user_name.Text;
+            string password = user_password.Text;
             bool verified = Program.dbConnect.validation(username, password);
             if (verified)
             {
@@ -90,14 +90,31 @@ namespace NeuraSpace
             }
             else
             {
-                               MessageBox.Show("Login failed. Incorrect username or password.");
+                MessageBox.Show("Login failed. Incorrect username or password.");
             }
-            
+
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }
+        private DashBoard DashBoard_Instance;
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+
+            if (DashBoard_Instance == null || DashBoard_Instance.IsDisposed)
+            {
+                DashBoard_Instance = new DashBoard(this);
+            }
+            DashBoard_Instance.Show();
+            this.Hide();
+
+
+        }
+    
+        }
     }
-}
+

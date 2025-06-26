@@ -38,5 +38,44 @@ public class database_connection
             }
         }
     }
+    public DataTable view_user_info()
+    {
+        string query = "select * from registered_customer";
+        using (SqlConnection connection = new SqlConnection(connectionstring))
+        {
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                using (SqlDataAdapter adopt = new SqlDataAdapter(cmd))
+                {
+                    DataTable data_table = new DataTable();
+                    adopt.Fill(data_table);
+                    return data_table;
+                }
+            }
+        }
+    }
+
+
+
+
+    public DataTable search_user(string username)
+    {
+        string query = "select * from registered_customer where username like @username";
+        using (SqlConnection connection = new SqlConnection(connectionstring))
+        {
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@username", "%" + username + "%");
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    return dataTable;
+                }
+            }
+        }
+    }
+            
+                
 }
    
