@@ -56,7 +56,8 @@ namespace NeuraSpace
 
         private void add_btn_Click(object sender, EventArgs e)
         {
-            new Form2(_parentForm).Show();
+
+
         }
 
         private void search_btn_Click(object sender, EventArgs e)
@@ -69,6 +70,21 @@ namespace NeuraSpace
 
         private void search_box_TextChanged(object sender, EventArgs e)
         {
+
+        }
+        private Input_Admin Input_Admin_Insatance;
+
+        private void delete_btn_Click(object sender, EventArgs e)
+        {
+            Input_Admin_Insatance = new Input_Admin();
+            Input_Admin_Insatance.Show();
+        }
+        private view_sensor view_sensor_Instance;
+        private void sensor_btn_Click(object sender, EventArgs e)
+        {
+            database_connection db = new database_connection();
+            view_sensor_Instance = new view_sensor();
+            view_sensor_Instance.Show();
 
         }
     }

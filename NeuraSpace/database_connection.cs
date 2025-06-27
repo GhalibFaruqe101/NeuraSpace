@@ -75,7 +75,48 @@ public class database_connection
             }
         }
     }
-            
+
+    public DataTable remove_user(string username)
+    {
+        string query = "delete from registered_customer where username = @username";
+        using (SqlConnection connection = new SqlConnection(connectionstring))
+        {
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@username", username);
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                { 
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    return dataTable;
+
+                }
+            }
+        }
+       
+    }
+    public DataTable sensor_information(string username)
+    {
+       
+        string query = "select s.sensor_id,  u.username, s.temperature, s.humidity, s.recorded_at FROM sensor_information s join registered_customer u on s.id = u.id where u.username = 'zarif'; ";
+        using( SqlConnection connection = new SqlConnection())
+        {
+            using(SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("username", username);
+                using (SqlDataAdapter adopter = new SqlDataAdapter(cmd))
+                        {
+                    DataTable datatable = new DataTable();
+                    adopter.Fill(datatable);
+                    return datatable;
+
+
+
+                }
+                   
+            }
+        }
+    }
                 
 }
    

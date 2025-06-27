@@ -90,6 +90,7 @@
             sensor_btn.TabIndex = 5;
             sensor_btn.Text = "Sensors";
             sensor_btn.UseVisualStyleBackColor = false;
+            sensor_btn.Click += sensor_btn_Click;
             // 
             // logs_btn
             // 
@@ -166,6 +167,7 @@
             delete_btn.TabIndex = 6;
             delete_btn.Text = "Delete";
             delete_btn.UseVisualStyleBackColor = false;
+            delete_btn.Click += delete_btn_Click;
             // 
             // fileSystemWatcher1
             // 
