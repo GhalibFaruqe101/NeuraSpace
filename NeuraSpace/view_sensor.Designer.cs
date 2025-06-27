@@ -49,6 +49,7 @@
             sensor_view_username.PlaceholderText = "User Name";
             sensor_view_username.Size = new Size(178, 23);
             sensor_view_username.TabIndex = 1;
+            sensor_view_username.TextChanged += sensor_view_username_TextChanged;
             // 
             // senor_view_search_btn
             // 

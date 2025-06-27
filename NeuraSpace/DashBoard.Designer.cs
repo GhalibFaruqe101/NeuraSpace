@@ -103,6 +103,7 @@
             logs_btn.TabIndex = 4;
             logs_btn.Text = "Logs";
             logs_btn.UseVisualStyleBackColor = false;
+            logs_btn.Click += logs_btn_Click;
             // 
             // viewUser_btn
             // 

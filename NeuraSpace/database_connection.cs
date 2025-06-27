@@ -1,6 +1,13 @@
-﻿using System;
-using System.Data;
+﻿using Azure.Identity;
 using Microsoft.Data.SqlClient;
+using System;
+using System.Data;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
+public static class User_logged 
+{
+    public static string logged_user { get; set; }
+}
 public class database_connection
 {
     private string connectionstring = "Server=Desktop-VTPLRO2\\SQLEXPRESS;Database=NeuraSpace;Trusted_Connection=True;TrustServerCertificate=True;";
@@ -22,8 +29,9 @@ public class database_connection
             }
         }
     }
-
+  
     public bool validation(string username, string password)
+       
     {
         string query = "select count(*) from registered_customer where username = @username and password = @password";
         using (SqlConnection connection = new SqlConnection(connectionstring))
@@ -34,7 +42,66 @@ public class database_connection
                 cmd.Parameters.AddWithValue("@password", password);
                 connection.Open();
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
+              
                 return count > 0;
+            }
+        }
+    }
+       
+    public DataTable show_user_logs(string username)
+
+    {
+        
+        string query = "select l.log_id, u.username, l.recommendation_text, l.logged_at from user_logs l join registered_customer u on l.id = u.id where u.username = @username";
+        using (SqlConnection connection = new SqlConnection(connectionstring))
+        {
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@username", username);
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    DataTable datatable = new DataTable();
+                    adapter.Fill(datatable);
+                    return datatable;
+
+                }
+            }
+        }
+    }
+
+    public DataTable show_user_sensors(string username)
+    {
+        string query = "select s.sensor_id, u.username, s.temperature, s.humidity, s.recorded_at from sensor_information s join registered_customer u on s.id = u.id where u.username = @username";
+        using (SqlConnection connection = new SqlConnection(connectionstring))
+        {
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@username", username);
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    DataTable datatable = new DataTable();
+                    adapter.Fill(datatable);
+                    return datatable;
+                }
+            }
+        }
+    }
+
+    public DataTable show_user_recommandation(string username)
+    {
+        string query = "select u.username, l.recommendation_text, l.logged_at from user_logs l join registered_customer u on l.id = u.id where u.username = @username";
+        using(SqlConnection connection = new SqlConnection(connectionstring))
+        {
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@username", username);
+                using(SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    DataTable datatable = new DataTable();
+                    adapter.Fill(datatable);
+                    return datatable;
+                }
+
             }
         }
     }
@@ -98,12 +165,14 @@ public class database_connection
     public DataTable sensor_information(string username)
     {
        
-        string query = "select s.sensor_id,  u.username, s.temperature, s.humidity, s.recorded_at FROM sensor_information s join registered_customer u on s.id = u.id where u.username = 'zarif'; ";
-        using( SqlConnection connection = new SqlConnection())
+        string query = "select s.sensor_id,u.username, s.temperature,s.humidity,s.recorded_at from sensor_information s join registered_customer u on s.id = u.id where u.username = @username;";
+
+        
+        using ( SqlConnection connection = new SqlConnection(connectionstring))
         {
             using(SqlCommand cmd = new SqlCommand(query, connection))
             {
-                cmd.Parameters.AddWithValue("username", username);
+                cmd.Parameters.AddWithValue("@username", username);
                 using (SqlDataAdapter adopter = new SqlDataAdapter(cmd))
                         {
                     DataTable datatable = new DataTable();
@@ -117,6 +186,28 @@ public class database_connection
             }
         }
     }
-                
+    public DataTable logs_information(string username)
+    {
+        string query = " select l.log_id, u.username, l.recommendation_text, l.logged_at from user_logs l join registered_customer u on l.id = u.id where u.username = @username; ";
+
+
+        using (SqlConnection connection = new SqlConnection(connectionstring))
+        {
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("username", username);
+                using (SqlDataAdapter adopter = new SqlDataAdapter(cmd))
+                {
+                    DataTable datatable = new DataTable();
+                    adopter.Fill(datatable);
+                    return datatable;
+
+                }
+
+            }
+        }
+    }
+
+
 }
    

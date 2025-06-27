@@ -87,5 +87,15 @@ namespace NeuraSpace
             view_sensor_Instance.Show();
 
         }
+
+        private view_logs view_logs_Instance;
+
+        private void logs_btn_Click(object sender, EventArgs e)
+        {
+            database_connection db = new database_connection();
+
+            view_logs_Instance = new view_logs();
+            view_logs_Instance.Show();
+        }
     }
 }

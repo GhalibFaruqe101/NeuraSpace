@@ -77,18 +77,30 @@ namespace NeuraSpace
         {
 
         }
+        private User_DashBoard User_DashBoard_Instance;
+
 
         private void button1_Click_2(object sender, EventArgs e)
+
         {
+           
             string username = user_name.Text;
             string password = user_password.Text;
             bool verified = Program.dbConnect.validation(username, password);
             if (verified)
             {
-                MessageBox.Show("Login successful!");
+                //MessageBox.Show("Login successful!");
+                if (User_DashBoard_Instance == null || User_DashBoard_Instance.IsDisposed)
+                {
+                    User_DashBoard_Instance = new User_DashBoard(username);
+
+
+                }
+                User_DashBoard_Instance.Show();
+                this.Hide();
 
             }
-            else
+            else if(!verified)
             {
                 MessageBox.Show("Login failed. Incorrect username or password.");
             }
@@ -100,6 +112,7 @@ namespace NeuraSpace
 
         }
         private DashBoard DashBoard_Instance;
+       
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -111,6 +124,7 @@ namespace NeuraSpace
             }
             DashBoard_Instance.Show();
             this.Hide();
+
 
 
         }
