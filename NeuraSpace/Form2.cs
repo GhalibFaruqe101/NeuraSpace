@@ -57,7 +57,7 @@ namespace NeuraSpace
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             string username = user_name.Text;
             string fullname = full_name.Text;
             string password = user_password.Text;
@@ -66,7 +66,7 @@ namespace NeuraSpace
             string phone = user_phone.Text;
             if (password == confirm_pass)
             {
-            int result = Program.dbConnect.register_user(fullname, username, password, email, phone);
+                int result = Program.dbConnect.register_user(fullname, username, password, email, phone);
                 if (result > 0)
                 {
                     MessageBox.Show("Registration successful!");
@@ -85,6 +85,13 @@ namespace NeuraSpace
 
 
             }
+        }
+        private Form1 Form1_Instance;
+        private void reg_back_btn_Click(object sender, EventArgs e)
+        {
+            Form1_Instance = new Form1();
+            Form1_Instance.Show();
+            this.Hide();
         }
     }
 }

@@ -43,6 +43,7 @@
             label7 = new Label();
             button1 = new Button();
             button2 = new Button();
+            reg_back_btn = new Button();
             SuspendLayout();
             // 
             // label1
@@ -205,12 +206,26 @@
             button2.TabIndex = 15;
             button2.UseVisualStyleBackColor = false;
             // 
+            // reg_back_btn
+            // 
+            reg_back_btn.BackColor = Color.Black;
+            reg_back_btn.FlatAppearance.BorderSize = 0;
+            reg_back_btn.ForeColor = Color.White;
+            reg_back_btn.Location = new Point(12, 12);
+            reg_back_btn.Name = "reg_back_btn";
+            reg_back_btn.Size = new Size(54, 36);
+            reg_back_btn.TabIndex = 16;
+            reg_back_btn.Text = "Back";
+            reg_back_btn.UseVisualStyleBackColor = false;
+            reg_back_btn.Click += reg_back_btn_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Window;
             ClientSize = new Size(789, 642);
+            Controls.Add(reg_back_btn);
             Controls.Add(full_name);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -250,5 +265,6 @@
         private Label label7;
         private Button button1;
         private Button button2;
+        private Button reg_back_btn;
     }
 }

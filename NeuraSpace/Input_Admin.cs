@@ -25,7 +25,7 @@ namespace NeuraSpace
             if (result == DialogResult.Yes)
             {
 
-                DataTable removed = db.remove_user(username);
+                bool removed = db.remove_user(username);
 
             }
 
@@ -35,6 +35,43 @@ namespace NeuraSpace
 
         private void admin_input_username_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Admin_input_add_Click(object sender, EventArgs e)
+        {
+            string username = admin_input_username.Text;
+            string fullname = admin_input_fullname.Text;
+            string password = admin_input_pass.Text;
+            string confirm_pass = admin_input_passCom.Text;
+            string email = admin_input_email.Text;
+            string phone = Admin_input_phone.Text;
+            if (password == confirm_pass)
+            {
+                int result = Program.dbConnect.register_user(fullname, username, password, email, phone);
+                if (result > 0)
+                {
+                    MessageBox.Show("newpp user input into the system!");
+                    this.Close();
+                  
+                }
+                else
+                {
+                    MessageBox.Show("failed. wrong input.");
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Passwords do not match!");
+
+
+            }
 
         }
     }

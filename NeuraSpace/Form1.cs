@@ -3,14 +3,12 @@ namespace NeuraSpace
 
     public partial class Form1 : Form
     {
-        private Form2 form2Instance; // Declare an instance of Form2
+        private Form2 form2Instance; 
 
         public Form1()
         {
             InitializeComponent();
-            //form2Instance = new Form2(this);
-            //form2Instance.Show();
-            //this.Hide();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -38,10 +36,7 @@ namespace NeuraSpace
 
         }
 
-        //private void label5_Click(object sender, EventArgs e)
-        //{
-        //    form2Instance.Show(); // Use the instance to call Show()
-        //}
+       
 
         private void label6_Click(object sender, EventArgs e)
         {
@@ -111,22 +106,21 @@ namespace NeuraSpace
         {
 
         }
-        private DashBoard DashBoard_Instance;
+        private Admin_login Admin_login_Instance;
        
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+           
 
 
-            if (DashBoard_Instance == null || DashBoard_Instance.IsDisposed)
+            if (Admin_login_Instance == null || Admin_login_Instance.IsDisposed)
             {
-                DashBoard_Instance = new DashBoard(this);
+                Admin_login_Instance = new Admin_login();
             }
-            DashBoard_Instance.Show();
-            this.Hide();
-
-
-
+            Admin_login_Instance.Show();
+          
+            this.Hide(); 
         }
     
         }

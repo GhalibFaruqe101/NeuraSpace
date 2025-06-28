@@ -36,7 +36,6 @@ namespace NeuraSpace
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            checkBox1 = new CheckBox();
             label6 = new Label();
             linkLabel1 = new LinkLabel();
             user_name = new TextBox();
@@ -84,18 +83,6 @@ namespace NeuraSpace
             label3.TabIndex = 4;
             label3.Text = "Password";
             label3.Click += label3_Click;
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Segoe UI Emoji", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox1.ForeColor = Color.SteelBlue;
-            checkBox1.Location = new Point(542, 453);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(113, 30);
-            checkBox1.TabIndex = 7;
-            checkBox1.Text = "Remeber\r\n";
-            checkBox1.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -218,7 +205,6 @@ namespace NeuraSpace
             Controls.Add(user_name);
             Controls.Add(linkLabel1);
             Controls.Add(label6);
-            Controls.Add(checkBox1);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -238,7 +224,6 @@ namespace NeuraSpace
         private Label label1;
         private Label label2;
         private Label label3;
-        private CheckBox checkBox1;
 
         // Add this method to the Form1 class
         private void label3_Click(object sender, EventArgs e)
@@ -286,7 +271,7 @@ namespace NeuraSpace
             //AddTextBoxBorder(textBox2, Color.SpringGreen, 2);
 
             // Fix the "Remember" checkbox text
-            checkBox1.Text = "Remember";
+            
         }
 
         private void AddTextBoxBorder(TextBox textBox, Color borderColor, int borderWidth)

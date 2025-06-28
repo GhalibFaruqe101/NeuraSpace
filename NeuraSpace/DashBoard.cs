@@ -12,14 +12,16 @@ namespace NeuraSpace
 {
     public partial class DashBoard : Form
     {
-        private Form1 _parentForm;
-        public DashBoard(Form1 parentForm)
+        //private Form1 _parentForm;
+        //public DashBoard(DashBoard_Instance)
+        public DashBoard()
         {
 
 
-            InitializeComponent(); ;
-            _parentForm = parentForm;
-            _parentForm.Hide();
+            InitializeComponent();
+
+
+
 
 
 
@@ -33,30 +35,32 @@ namespace NeuraSpace
 
         private void viewUser_btn_Click(object sender, EventArgs e)
         {
-            int view_user = Program.dbConnect.view_user_info().Rows.Count;
-            if (view_user > 0)
-            {
-                DataTable dt = Program.dbConnect.view_user_info();
-                dataGridView1.DataSource = dt;
+            //int view_user = Program.dbConnect.view_user_info().Rows.Count;
+            //if (view_user > 0)
+            //{
+            //    DataTable dt = Program.dbConnect.view_user_info();
+            //    dataGridView1.DataSource = dt;
 
-                dataGridView1.Refresh();
+            //    dataGridView1.Refresh();
 
-            }
-            else
-            {
-                MessageBox.Show("No user found in the database.");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No user found in the database.");
 
-            }
+            //}
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
+        private Input_Admin Input_Admin_Instance;
         private void add_btn_Click(object sender, EventArgs e)
         {
 
+            Input_Admin_Instance = new Input_Admin();
+            Input_Admin_Instance.Show();
 
         }
 
@@ -96,6 +100,31 @@ namespace NeuraSpace
 
             view_logs_Instance = new view_logs();
             view_logs_Instance.Show();
+        }
+        private Admin_login Admin_login_Instance;
+        private void DashBoard_back_btn_Click(object sender, EventArgs e)
+        {
+            Admin_login_Instance = new Admin_login();
+            Admin_login_Instance.Show();
+            this.Hide();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int view_user = Program.dbConnect.view_user_info().Rows.Count;
+            if (view_user > 0)
+            {
+                DataTable dt = Program.dbConnect.view_user_info();
+                dataGridView1.DataSource = dt;
+
+                dataGridView1.Refresh();
+
+            }
+            else
+            {
+                MessageBox.Show("No user found in the database.");
+
+            }
         }
     }
 }

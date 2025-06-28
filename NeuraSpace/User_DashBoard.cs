@@ -49,5 +49,18 @@ namespace NeuraSpace
             DataTable result = db.show_user_recommandation(_username);
             dataGridView1.DataSource = result;
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private Form1 Form1_Instance;
+        private void user_DashBoard_back_btn_Click(object sender, EventArgs e)
+        {
+            Form1_Instance = new Form1();
+            Form1_Instance.Show();
+            this.Hide();
+        }
     }
 }

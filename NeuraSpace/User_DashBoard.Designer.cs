@@ -33,8 +33,6 @@
             dateTimePicker1 = new DateTimePicker();
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            panel3 = new Panel();
-            panel2 = new Panel();
             panel4 = new Panel();
             user_sensor_btn = new Button();
             reccommend_user_btn = new Button();
@@ -46,6 +44,7 @@
             logsToolStripMenuItem1 = new ToolStripMenuItem();
             recommandationToolStripMenuItem = new ToolStripMenuItem();
             dataGridView1 = new DataGridView();
+            user_DashBoard_back_btn = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel4.SuspendLayout();
@@ -61,12 +60,10 @@
             panel1.Controls.Add(dateTimePicker1);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(panel3);
-            panel1.Controls.Add(panel2);
             panel1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel1.Location = new Point(0, -1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1246, 126);
+            panel1.Size = new Size(1246, 141);
             panel1.TabIndex = 0;
             // 
             // dateTimePicker1
@@ -83,11 +80,12 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(22, 20);
+            pictureBox1.Location = new Point(21, 26);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(97, 70);
+            pictureBox1.Size = new Size(107, 83);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // label1
             // 
@@ -100,21 +98,6 @@
             label1.Size = new Size(291, 64);
             label1.TabIndex = 1;
             label1.Text = "NueraSpace";
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.Black;
-            panel3.Location = new Point(3, 123);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(129, 718);
-            panel3.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            panel2.Location = new Point(3, 120);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(116, 392);
-            panel2.TabIndex = 1;
             // 
             // panel4
             // 
@@ -215,17 +198,30 @@
             dataGridView1.Size = new Size(579, 447);
             dataGridView1.TabIndex = 3;
             // 
+            // user_DashBoard_back_btn
+            // 
+            user_DashBoard_back_btn.BackColor = Color.Black;
+            user_DashBoard_back_btn.FlatAppearance.BorderSize = 0;
+            user_DashBoard_back_btn.ForeColor = Color.White;
+            user_DashBoard_back_btn.Location = new Point(10, 146);
+            user_DashBoard_back_btn.Name = "user_DashBoard_back_btn";
+            user_DashBoard_back_btn.Size = new Size(54, 36);
+            user_DashBoard_back_btn.TabIndex = 17;
+            user_DashBoard_back_btn.Text = "Back";
+            user_DashBoard_back_btn.UseVisualStyleBackColor = false;
+            user_DashBoard_back_btn.Click += user_DashBoard_back_btn_Click;
+            // 
             // User_DashBoard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1246, 842);
+            Controls.Add(user_DashBoard_back_btn);
             Controls.Add(dataGridView1);
             Controls.Add(panel4);
             Controls.Add(panel1);
             ForeColor = SystemColors.ButtonFace;
             Name = "User_DashBoard";
-            Text = "User_DashBoard";
             Load += User_DashBoard_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -240,8 +236,6 @@
         #endregion
 
         private Panel panel1;
-        private Panel panel2;
-        private Panel panel3;
         private Panel panel4;
         private Panel panel6;
         private ContextMenuStrip contextMenuStrip1;
@@ -256,5 +250,6 @@
         private PictureBox pictureBox1;
         private Label label1;
         private DataGridView dataGridView1;
+        private Button user_DashBoard_back_btn;
     }
 }
